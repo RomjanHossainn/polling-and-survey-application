@@ -2,7 +2,7 @@ import { createContext, useEffect, useState} from "react";
 import {createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut} from 'firebase/auth'
 import { auth } from "../firebase/firebase.config";
 
-const AuthContext = createContext(null)
+export const AuthContext = createContext(null)
 
 const AuthProvider = ({children}) => {
 
@@ -25,6 +25,8 @@ const AuthProvider = ({children}) => {
         setLoading(true)
         return signOut(auth)
     }
+
+    
 
     useEffect(() =>{
         const unSubsCribe = onAuthStateChanged(auth,currentUser => {
