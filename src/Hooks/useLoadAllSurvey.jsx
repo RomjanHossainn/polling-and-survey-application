@@ -1,23 +1,22 @@
 import {
-  QueryClient,
-  QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
-const useLoadAllSurvey = () => {
+const useLoadAllSurvey = (currentPage,itemPerPage) => {
+
 
     const axiosPublic = useAxiosPublic()
 
-    const {data : surveyes = [], isPending} = useQuery({
+    const {data : surveyes = [], isPending,refetch} = useQuery({
         queryKey : ['surveydata'],
         queryFn : async () => {
-            const data = await axiosPublic.get('/surveyes');
+            const data = await axiosPublic.get(`/surveyes?page=${currentPage}&size=${itemPerPage}`);
             return data.data;
         }
     })
 
-  return [surveyes,isPending];
+  return [surveyes,isPending,refetch];
 };
 
 export default useLoadAllSurvey;
