@@ -5,6 +5,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 4,
     "category": "food",
     "timestamp": "2023-11-25T12:00:00.000Z"
   },
@@ -14,6 +15,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote": 6,
     "category": "food",
     "timestamp": "2023-11-25T12:30:00.000Z"
   },
@@ -23,6 +25,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote": 4,
     "category": "food",
     "timestamp": "2023-11-25T13:00:00.000Z"
   },
@@ -32,6 +35,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 6,
     "category": "food",
     "timestamp": "2023-11-25T13:30:00.000Z"
   },
@@ -41,6 +45,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 10,
     "category": "technology",
     "timestamp": "2023-11-25T15:00:00.000Z"
   },
@@ -50,6 +55,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 12,
     "category": "technology",
     "timestamp": "2023-11-25T15:30:00.000Z"
   },
@@ -59,6 +65,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 3,
     "category": "technology",
     "timestamp": "2023-11-25T16:00:00.000Z"
   },
@@ -68,6 +75,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 15,
     "category": "technology",
     "timestamp": "2023-11-25T16:30:00.000Z"
   },
@@ -77,6 +85,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 20,
     "category": "travel",
     "timestamp": "2023-11-25T17:00:00.000Z"
   },
@@ -86,6 +95,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 5,
     "category": "travel",
     "timestamp": "2023-11-25T17:30:00.000Z"
   },
@@ -95,6 +105,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 7,
     "category": "travel",
     "timestamp": "2023-11-25T18:00:00.000Z"
   },
@@ -104,6 +115,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 5,
     "category": "travel",
     "timestamp": "2023-11-25T18:30:00.000Z"
   },
@@ -113,6 +125,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 3,
     "category": "movies",
     "timestamp": "2023-11-25T19:00:00.000Z"
   },
@@ -122,6 +135,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 30,
     "category": "movies",
     "timestamp": "2023-11-25T19:30:00.000Z"
   },
@@ -131,6 +145,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 20,
     "category": "movies",
     "timestamp": "2023-11-25T20:00:00.000Z"
   },
@@ -140,6 +155,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 10,
     "category": "movies",
     "timestamp": "2023-11-25T20:30:00.000Z"
   },
@@ -149,6 +165,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 4,
     "category": "fitness",
     "timestamp": "2023-11-25T21:00:00.000Z"
   },
@@ -158,6 +175,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 6,
     "category": "fitness",
     "timestamp": "2023-11-25T22:00:00.000Z"
   },
@@ -167,6 +185,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 25,
     "category": "fitness",
     "timestamp": "2023-11-25T22:30:00.000Z"
   },
@@ -176,6 +195,7 @@
   "options": ["Yes", "No"],
   "likeCount": 0,
   "dislikeCount": 0,
+  "vote" : 23,
   "category": "fitness",
   "timestamp": "2023-11-26T10:30:00.000Z"
     },
@@ -185,6 +205,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 7,
     "category": "music",
     "timestamp": "2023-11-25T23:00:00.000Z"
   },
@@ -194,6 +215,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 6,
     "category": "music",
     "timestamp": "2023-11-25T23:30:00.000Z"
   },
@@ -203,6 +225,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 2,
     "category": "music",
     "timestamp": "2023-11-26T00:00:00.000Z"
   },
@@ -212,6 +235,7 @@
     "options": ["Yes", "No"],
     "likeCount": 0,
     "dislikeCount": 0,
+    "vote" : 0,
     "category": "music",
     "timestamp": "2023-11-26T00:30:00.000Z"
   }

@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import GoogleSignUp from "../../components/GoogleSignUp/GoogleSignUp";
 
 const Register = () => {
 
@@ -16,13 +17,13 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
    const onSubmit = (data) => {
       createUser(data.email,data.password)
       .then(result => {
         const user = result.user;
-        alert('successFully')
         updateProfile(user,{
           displayName : data.name,photoURL:data.imageURL
         })
@@ -35,7 +36,16 @@ const Register = () => {
 
           axiosPublic.post('/users',user)
           .then(result => {
-            console.log(result.data)
+            if(result.data.insertedId){
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Register Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              reset()
+            }
           })
 
         })
@@ -54,9 +64,12 @@ const Register = () => {
         <div className="container px-5 py-24 mx-auto  items-center">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className=" max-w-sm bg-gray-100 rounded-lg p-8 flex flex-col mx-auto  w-full mt-10 md:mt-0">
-              <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
-                Register Now
-              </h2>
+              <div>
+                <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
+                  Register Now
+                </h2>
+                <GoogleSignUp></GoogleSignUp>
+              </div>
               <div className="relative mb-4">
                 <label className="leading-7 text-sm text-gray-600">
                   Full Name
@@ -84,12 +97,14 @@ const Register = () => {
                   Password
                 </label>
                 <input
-                  {...register("password", { required: true ,minLength : 8})}
+                  {...register("password", { required: true, minLength: 8 })}
                   type="password"
                   name="password"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 />
-                {errors.password && <p> Password is required. min-8 carecter</p>}
+                {errors.password && (
+                  <p> Password is required. min-8 carecter</p>
+                )}
               </div>
               <div className="relative mb-4">
                 <label className="leading-7 text-sm text-gray-600">
