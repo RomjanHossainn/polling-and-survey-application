@@ -1,6 +1,11 @@
 import Navbar from "../../ShareComponets/Navbar/Navbar";
 
 const Home = () => {
+
+
+    const date = new Date();
+    
+
     return (
         <div>
             <Navbar></Navbar>

@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-const Login = () => {
+import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
+const Login = () => {
+    const { signInUser } = useAuth();
     const {
       register,
       handleSubmit,
@@ -9,7 +12,30 @@ const Login = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        console.log(data)
+        signInUser(data.email,data.password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(err => {
+                if (err.code === "auth/invalid-login-credentials") {
+                  const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.onmouseenter = Swal.stopTimer;
+                      toast.onmouseleave = Swal.resumeTimer;
+                    },
+                  });
+                  Toast.fire({
+                    icon: "warning",
+                    title: "invalid login credentials ",
+                  });
+                }
+            
+        })
     }
 
     return (
@@ -44,6 +70,7 @@ const Login = () => {
                 {errors.password && (
                   <p> Password is required</p>
                 )}
+                
               </div>
 
               <button className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">

@@ -3,9 +3,14 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+
 const Register = () => {
 
   const {createUser} = useAuth()
+
+  const axiosPublic = useAxiosPublic();
+  
 
   const {
     register,
@@ -22,13 +27,17 @@ const Register = () => {
           displayName : data.name,photoURL:data.imageURL
         })
         .then(() => {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your work has been saved",
-            showConfirmButton: false,
-            timer: 1500,
-          });
+
+          const user = {
+            name : data.name,
+            email : data.email
+          }
+
+          axiosPublic.post('/users',user)
+          .then(result => {
+            console.log(result.data)
+          })
+
         })
         .catch(err => {
           console.log(err)

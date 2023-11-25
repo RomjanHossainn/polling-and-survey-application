@@ -1,0 +1,218 @@
+[
+  {
+    "title": "Pizza Toppings Preferences",
+    "description": "Do you like these pizza toppings? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "food",
+    "timestamp": "2023-11-25T12:00:00.000Z"
+  },
+  {
+    "title": "Favorite Ice Cream Flavors",
+    "description": "Are these your favorite ice cream flavors? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "food",
+    "timestamp": "2023-11-25T12:30:00.000Z"
+  },
+  {
+    "title": "Morning Meal Preferences",
+    "description": "Is this your favorite morning meal? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "food",
+    "timestamp": "2023-11-25T13:00:00.000Z"
+  },
+  {
+    "title": "Coffee or Tea?",
+    "description": "Do you prefer coffee or tea? Choose Yes for coffee, No for tea.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "food",
+    "timestamp": "2023-11-25T13:30:00.000Z"
+  },
+  {
+    "title": "Smartphone Preferences",
+    "description": "Do you prefer these smartphone brands? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "technology",
+    "timestamp": "2023-11-25T15:00:00.000Z"
+  },
+  {
+    "title": "Favorite Social Media Platform",
+    "description": "Is this your favorite social media platform? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "technology",
+    "timestamp": "2023-11-25T15:30:00.000Z"
+  },
+  {
+    "title": "Gaming Habits",
+    "description": "Is this your favorite gaming platform? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "technology",
+    "timestamp": "2023-11-25T16:00:00.000Z"
+  },
+  {
+    "title": "Tech Gadgets Wishlist",
+    "description": "Are you excited about this tech gadget? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "technology",
+    "timestamp": "2023-11-25T16:30:00.000Z"
+  },
+  {
+    "title": "Dream Vacation Spots",
+    "description": "Are these your dream vacation spots? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "travel",
+    "timestamp": "2023-11-25T17:00:00.000Z"
+  },
+  {
+    "title": "Adventure travel Preferences",
+    "description": "Do you enjoy these adventure travel activities? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "travel",
+    "timestamp": "2023-11-25T17:30:00.000Z"
+  },
+  {
+    "title": "Historical Destinations",
+    "description": "Do you like these historical travel destinations? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "travel",
+    "timestamp": "2023-11-25T18:00:00.000Z"
+  },
+  {
+    "title": "Cityscape Favorites",
+    "description": "Do you love the city vibes of these cities? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "travel",
+    "timestamp": "2023-11-25T18:30:00.000Z"
+  },
+  {
+    "title": "Favorite Movie Genres",
+    "description": "Do you enjoy these movie genres? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "movies",
+    "timestamp": "2023-11-25T19:00:00.000Z"
+  },
+  {
+    "title": "Top Movie Picks of the Decade",
+    "description": "Were these your top movie picks of the last decade? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "movies",
+    "timestamp": "2023-11-25T19:30:00.000Z"
+  },
+  {
+    "title": "Classic Film Favorites",
+    "description": "Are these your classic film favorites? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "movies",
+    "timestamp": "2023-11-25T20:00:00.000Z"
+  },
+  {
+    "title": "Animated movies Showdown",
+    "description": "Do you love these animated movies? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "movies",
+    "timestamp": "2023-11-25T20:30:00.000Z"
+  },
+  {
+    "title": "Favorite Workout Routine",
+    "description": "Is this your favorite workout routine? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "fitness",
+    "timestamp": "2023-11-25T21:00:00.000Z"
+  },
+  {
+    "title": "Preferred Workout music",
+    "description": "Do you prefer this genre of music for workouts? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "fitness",
+    "timestamp": "2023-11-25T22:00:00.000Z"
+  },
+  {
+    "title": "fitness App Usage",
+    "description": "Do you use this fitness app? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "fitness",
+    "timestamp": "2023-11-25T22:30:00.000Z"
+  },
+  {
+  "title": "fitness Goals Check-In",
+  "description": "Are you currently working towards achieving your fitness goals? Choose Yes or No.",
+  "options": ["Yes", "No"],
+  "likeCount": 0,
+  "dislikeCount": 0,
+  "category": "fitness",
+  "timestamp": "2023-11-26T10:30:00.000Z"
+    },
+  {
+    "title": "Favorite music Genres",
+    "description": "Do you enjoy this music genre? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "music",
+    "timestamp": "2023-11-25T23:00:00.000Z"
+  },
+  {
+    "title": "Top Artists of the Year",
+    "description": "Are these your top artists of the year? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "music",
+    "timestamp": "2023-11-25T23:30:00.000Z"
+  },
+  {
+    "title": "Classic Hits or Modern Beats",
+    "description": "Do you prefer classic hits or modern beats? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "music",
+    "timestamp": "2023-11-26T00:00:00.000Z"
+  },
+  {
+    "title": "Concert Experience",
+    "description": "Do you prefer this type of concert experience? Choose Yes or No.",
+    "options": ["Yes", "No"],
+    "likeCount": 0,
+    "dislikeCount": 0,
+    "category": "music",
+    "timestamp": "2023-11-26T00:30:00.000Z"
+  }
+]
