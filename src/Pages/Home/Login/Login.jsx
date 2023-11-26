@@ -1,11 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import GoogleSignUp from "../../../components/GoogleSignUp/GoogleSignUp";
 
+
+
 const Login = () => {
+
     const { signInUser } = useAuth();
+    
+    const location = useLocation()
+    console.log(location)
+    const navigate = useNavigate()
     const {
       register,
       handleSubmit,
@@ -26,6 +33,7 @@ const Login = () => {
                 timer: 1500,
               });
               reset();
+              navigate(location.state? location.state : '/')
             }
             
         })
@@ -60,7 +68,7 @@ const Login = () => {
                 <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
                   Login Now
                 </h2>
-                <GoogleSignUp></GoogleSignUp>
+                <GoogleSignUp state = {location.state}></GoogleSignUp>
               </div>
               <div className="relative mb-4">
                 <label className="leading-7 text-sm text-gray-600">Email</label>
@@ -90,7 +98,7 @@ const Login = () => {
               </button>
               <p className="text-xs text-center text-gray-500 mt-3">
                 There is no account before?{" "}
-                <Link to="/register" className="text-indigo-500">
+                <Link to="/register" state={location} className="text-indigo-500">
                   Register
                 </Link>
               </p>

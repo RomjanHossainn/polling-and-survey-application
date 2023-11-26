@@ -1,8 +1,8 @@
 import { useLoaderData } from "react-router-dom";
-import useLoadAllSurvey from "../../Hooks/useLoadAllSurvey";
+
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
+
 import SingleSurvey from "./SingleSurvey";
 
 const AllSurveys = () => {
@@ -15,7 +15,7 @@ const AllSurveys = () => {
 
     const [surveys,setSurveys] = useState(null)
 
-    console.log(surveys)
+
 
     useEffect(() => {
         setSurveys(null)
@@ -54,12 +54,12 @@ const AllSurveys = () => {
 
     return (
       <div>
-        <div className="grid md:grid-cols-2 gap-12"> 
-            {
-                surveys?.map(survey => <SingleSurvey key={survey._id}survey={survey}></SingleSurvey>)
-            }
+        <div className="grid md:grid-cols-2 gap-12 py-8">
+          {surveys?.map((survey) => (
+            <SingleSurvey key={survey._id} survey={survey}></SingleSurvey>
+          ))}
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center py-5">
           <a
             onClick={handlePrivies}
             href="#"
@@ -80,18 +80,20 @@ const AllSurveys = () => {
             </div>
           </a>
 
-          {pages.map((page, index) => (
-            <a
-              key={index}
-              href="#"
-              onClick={() => setCurrentPage(page)}
-              className={`hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200 ${
-                currentPage === page && "bg-blue-500 text-white"
-              }`}
-            >
-              {page}
-            </a>
-          ))}
+          
+            {pages.map((page, index) => (
+              <a
+                key={index}
+                href="#"
+                onClick={() => setCurrentPage(page)}
+                className={`hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform  rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200 ${
+                  currentPage === page && "bg-blue-500 text-white"
+                }`}
+              >
+                {page}
+              </a>
+            ))}
+          
 
           <a
             onClick={handleNext}

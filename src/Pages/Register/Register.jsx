@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
@@ -58,6 +58,9 @@ const Register = () => {
       })
    };
 
+   const loaction = useLocation();
+
+   console.log(loaction)
 
     return (
       <section className="text-gray-600 body-font">
@@ -68,7 +71,7 @@ const Register = () => {
                 <h2 className="text-gray-900 text-lg font-medium title-font mb-5">
                   Register Now
                 </h2>
-                <GoogleSignUp></GoogleSignUp>
+                <GoogleSignUp state={loaction.state.state}></GoogleSignUp>
               </div>
               <div className="relative mb-4">
                 <label className="leading-7 text-sm text-gray-600">

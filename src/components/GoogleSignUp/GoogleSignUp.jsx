@@ -2,13 +2,18 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase/firebase.config";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
-const GoogleSignUp = () => {
+const GoogleSignUp = ({state}) => {
 
     const provider = new GoogleAuthProvider();
+    const navigateHome = useNavigate()
 
     const axiosPublic = useAxiosPublic()
+
+
+    console.log(state)
 
     const GoogleSignIn = () => {
         signInWithPopup(auth,provider)
@@ -21,6 +26,7 @@ const GoogleSignUp = () => {
             axiosPublic.post('/users',user)
             .then(result => {
                 console.log(result.data)
+                navigateHome(state ? state : '/');
                 if(result.data.insertedId){
                     if (result.data.insertedId) {
                       Swal.fire({
@@ -30,6 +36,8 @@ const GoogleSignUp = () => {
                         showConfirmButton: false,
                         timer: 1500,
                       });
+
+                      
                       
                     }
                 }

@@ -10,6 +10,7 @@ import Login from "../Pages/Home/Login/Login";
 import DashBoard from "../Pages/DashBoard/DashBoard";
 import AllSurveys from "../Pages/Surveys/AllSurveys";
 import SurveyDetails from "../Pages/Surveys/SurveyDetails";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -29,13 +30,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/surveyspage",
-        element: <AllSurveys></AllSurveys>,
+        element: (
+          <PrivetRoute>
+            <AllSurveys></AllSurveys>
+          </PrivetRoute>
+        ),
         loader: () => fetch("http://localhost:5000/surveyCount"),
       },
       {
-        path : '/details/:id',
-        element : <SurveyDetails></SurveyDetails>
-      }
+        path: "/details/:id",
+        element: <SurveyDetails></SurveyDetails>,
+      },
     ],
   },
   {

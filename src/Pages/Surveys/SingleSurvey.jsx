@@ -11,23 +11,7 @@ const SingleSurvey = ({survey}) => {
 
     const {category,description,dislikeCount,likeCount,title,vote,_id} = survey || {}
 
-    // const [value,setValue] = useState('')
-
-
-    // const handleRadioValue = (e) => {
-    //     e.preventDefault()
-        
-    //     const answer = {
-    //         email : user?.email,
-    //         ans : value,
-    //     }
-
-    //     axiosPublic.post('/answer',answer)
-    //     .then(res => {
-    //         console.log(res.data)
-    //     })
-        
-    // }
+    
 
     return (
       <Link to={`/details/${_id}`}>
@@ -39,31 +23,7 @@ const SingleSurvey = ({survey}) => {
             {title}
           </h2>
           <p className="leading-relaxed mb-8">{description}</p>
-          {/* <div>
-          <form onSubmit={handleRadioValue}>
-            <div className="flex items-center">
-              <label htmlFor="yes">Yes</label>
-              <input
-                type="radio"
-                name="yes"
-                value="yes"
-                className="radio radio-primary"
-                onChange={(e) => setValue(e.target.value)}
-              />
-            </div>
-            <div className="flex items-center">
-              <label htmlFor="yes">No</label>
-              <input
-                type="radio"
-                name="yes"
-                value="no"
-                className="radio radio-primary"
-                onChange={(e) => setValue(e.target.value)}
-              />
-            </div>
-            <input type="submit" value="Send" />
-          </form>
-        </div> */}
+          
           <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
             <div className="flex gap-5">
               <div className="flex items-center gap-2">
