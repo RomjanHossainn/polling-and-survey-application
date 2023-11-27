@@ -11,6 +11,7 @@ import DashBoard from "../Pages/DashBoard/DashBoard";
 import AllSurveys from "../Pages/Surveys/AllSurveys";
 import SurveyDetails from "../Pages/Surveys/SurveyDetails";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashBoard></DashBoard>,
+    children : [
+      {
+        path : '/dashboard/manageusers',
+        element:<ManageUser></ManageUser>
+      }
+    ]
   },
 ]);
 
