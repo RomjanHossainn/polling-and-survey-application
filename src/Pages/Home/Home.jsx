@@ -1,15 +1,15 @@
 import Navbar from "../../ShareComponets/Navbar/Navbar";
+import MostVoted from "../../components/MostVoted/MostVoted";
 
 const Home = () => {
 
 
-    const date = new Date();
-    
+   
 
     return (
         <div>
             <Navbar></Navbar>
-            <h1 className="text-5xl">Home Page</h1>
+            <MostVoted></MostVoted>
         </div>
     );
 };

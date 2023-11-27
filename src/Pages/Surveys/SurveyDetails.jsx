@@ -15,13 +15,17 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import Swal from "sweetalert2";
 
 
 const SurveyDetails = () => {
   const { id } = useParams();
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
-  const [value,setValue] = useState('')
+ 
+  // const [value,setValue] = useState('')
+
+  const userId = user?.providerData[0].uid;
 
   const {
     data: survey = [],
@@ -35,7 +39,7 @@ const SurveyDetails = () => {
     },
   });
 
-  const { category, description, dislikeCount, likeCount, title, vote, _id } =
+  const { category, timestamp, description, dislikeCount, likeCount, title, vote, _id } =
     survey || {};
 
   if (isPending) {
@@ -44,25 +48,77 @@ const SurveyDetails = () => {
     );
   }
 
-  const handleRadioValue = (e) => {
-    e.preventDefault();
 
-    const answer = {
-      email: user?.email,
-      ans: value,
+
+  
+
+  const handleVote = () => {
+
+    const voteCheck = {
+      userId,
+      surveyId: _id,
+      impretion : 'vote'
     };
 
-    axiosPublic.post("/answer", answer).then((res) => {
-      console.log(res.data);
+    axiosPublic.post("/voteduser",voteCheck)
+    .then(res => {
+      if(res.data.message === 'AlreadyExist'){
+       Swal.fire({
+         icon: "error",
+         title: "Oops...",
+         text: "All Ready Voted !",
+       });
+      }
+    })
+
+    axiosPublic.patch(`/vote?id=${_id}`,voteCheck).then((result) => {
+      if (result.data.modifiedCount > 0) {
+        console.log(result)
+        refetch();
+      }
     });
   };
+
+
+
+
+  // const handleRadioValue = (e) => {
+  //   e.preventDefault();
+
+  //   const answer = {
+  //     email: user?.email,
+  //     ans: value,
+  //   };
+
+  //   axiosPublic.post("/answer", answer).then((res) => {
+  //     console.log(res.data);
+  //   });
+  // };
 
   
 
     const handleLike = () => {
+
+      const voteCheck = {
+        userId,
+        surveyId: _id,
+        impretion: "like",
+      };
+
+
+      axiosPublic.post("/voteduser", voteCheck).then((res) => {
+        if (res.data.message === "AlreadyExist") {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "All Ready Liked !",
+          });
+        }
+      });
+
     
       axiosPublic
-        .patch(`/likeincreement?id=${_id}`)
+        .patch(`/likeincreement?id=${_id}`,voteCheck)
         .then((result) => {
           if (result.data.modifiedCount > 0) {
             refetch();
@@ -73,7 +129,25 @@ const SurveyDetails = () => {
     };
 
     const handleDisLike = () => {
-      axiosPublic.patch(`/dislike?id=${_id}`).then((result) => {
+
+      const voteCheck = {
+        userId,
+        surveyId: _id,
+        impretion: "dislike",
+      };
+
+      axiosPublic.post("/voteduser", voteCheck).then((res) => {
+        if (res.data.message === "AlreadyExist") {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "All Ready Disliked !",
+          });
+        }
+      });
+
+
+      axiosPublic.patch(`/dislike?id=${_id}`,voteCheck).then((result) => {
        if(result.data.modifiedCount > 0){
         refetch()
        
@@ -83,34 +157,31 @@ const SurveyDetails = () => {
     };
 
 
-    const handleVote = () => {
-        axiosPublic.patch(`/vote?id=${_id}`).then((result) => {
-          if (result.data.modifiedCount > 0) {
-            refetch();
-          }
-        });
-    }
-
+    
 
    
 
     const data = [
       {
-        name : 'vote',
-        value : vote
+        name: "vote",
+        value: vote,
       },
       {
-        name : 'like',
-        value : likeCount
+        name: "like",
+        value: likeCount,
       },
       {
-        name : 'dislike',
-        value : dislikeCount
-      }
-    ]
+        name: "dislike",
+        value: dislikeCount,
+      },
+      {
+        name: "timestamp",
+        value : timestamp
+      },
+    ];
 
   return (
-    <div>
+    <div className="border my-5 max-w-4xl mx-auto">
       <div className="p-12 mx-auto max-w-3xl mt-12">
         <div className="flex items-center justify-between">
           <div>
@@ -127,7 +198,7 @@ const SurveyDetails = () => {
           </div>
         </div>
         <div>
-          <form onSubmit={handleRadioValue}>
+          <form >
             <div className="flex items-center mb-2 gap-2">
               <label htmlFor="yes">Yes</label>
               <input
@@ -174,7 +245,7 @@ const SurveyDetails = () => {
           </div>
           <span className="text-gray-400 mr-3 inline-flex items-center ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
             <button onClick={handleVote} className="btn mr-2">
-              Vote
+              vote
             </button>
             <p>{`Total Vote = ${vote}`}</p>
           </span>
@@ -213,14 +284,21 @@ const SurveyDetails = () => {
           <Legend />
           <Line
             type="monotone"
-            dataKey="value"
+            dataKey=""
             stroke="#8884d8"
             activeDot={{ r: 8 }}
           />
 
           <Line
             type="monotone"
-            dataKey="value"
+            dataKey=""
+            stroke="#82ca9d"
+            activeDot={{ r: 8 }}
+          />
+          <Line type="monotone" dataKey="value" activeDot={{ r: 8 }} />
+          <Line
+            type="monotone"
+            dataKey=""
             stroke="#82ca9d"
             activeDot={{ r: 8 }}
           />
