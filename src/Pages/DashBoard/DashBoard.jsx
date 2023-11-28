@@ -1,11 +1,19 @@
 import { MdManageAccounts } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
+import useUserRole from "../../Hooks/useUserRole";
+import { IoMdCreate } from "react-icons/io";
 const DashBoard = () => {
-  const isAdmin = true;
-  const isSurveyor = true;
 
+  const [{userRole},isPending] = useUserRole()
 
+  console.log(userRole)
+
+  if(isPending){
+    return (
+      <span className="loading absolute left-1/2 top-1/2 loading-spinner text-success"></span>
+    );
+  }
 
   return (
     <div className="flex gap-5">
@@ -26,31 +34,33 @@ const DashBoard = () => {
                 Admin
               </label>
 
-              {isAdmin || isSurveyor ? (
+              {userRole === "admin" || userRole === "surveyor" ? (
                 <>
-                  <Link to="dashboard/adminhome"
+                  <Link
+                    to="/dashboard"
                     className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                    
                   >
                     <FaHome />
                     <span className="mx-2 text-sm font-medium">Admin Home</span>
                   </Link>
-                  <Link to="/dashboard/manageusers"
+                  <Link
+                    to="/dashboard/manageusers"
                     className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
-                    
                   >
                     <MdManageAccounts />
                     <span className="mx-2 text-sm font-medium">
                       Manage users.
                     </span>
                   </Link>
-                  <a
+                  <Link to="/dashboard/createsurvey"
                     className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
                     href="#"
                   >
-                    <MdManageAccounts />
-                    <span className="mx-2 text-sm font-medium">All Users</span>
-                  </a>
+                    <IoMdCreate />
+                    <span className="mx-2 text-sm font-medium">
+                      Create Survey
+                    </span>
+                  </Link>
                 </>
               ) : (
                 ""

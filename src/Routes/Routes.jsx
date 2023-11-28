@@ -12,6 +12,8 @@ import AllSurveys from "../Pages/Surveys/AllSurveys";
 import SurveyDetails from "../Pages/Surveys/SurveyDetails";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
+import AdminPrivet from "../PrivetRoute/AdminPrivet/AdminPrivet";
+import CreateSurvey from "../Pages/DashBoard/CreateSurvey/CreateSurvey";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,12 +49,28 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashBoard></DashBoard>,
-    children : [
+    children: [
       {
-        path : '/dashboard/manageusers',
-        element:<ManageUser></ManageUser>
-      }
-    ]
+        path: "/dashboard",
+        element: <h1>HOME</h1>,
+      },
+      {
+        path: "/dashboard/manageusers",
+        element: (
+          <AdminPrivet>
+            <ManageUser></ManageUser>
+          </AdminPrivet>
+        ),
+      },
+      {
+        path: "/dashboard/createsurvey",
+        element: (
+          <AdminPrivet>
+            <CreateSurvey></CreateSurvey>
+          </AdminPrivet>
+        ),
+      },
+    ],
   },
 ]);
 
