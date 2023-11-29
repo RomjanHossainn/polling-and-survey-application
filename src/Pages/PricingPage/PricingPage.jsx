@@ -8,6 +8,7 @@ import {Elements} from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 
 const PricingPage = () => {
+
     return (
       <div>
         <h1>Prising Page</h1>

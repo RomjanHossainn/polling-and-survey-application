@@ -6,16 +6,10 @@ import { IoMdCreate } from "react-icons/io";
 import { MdOutlinePostAdd } from "react-icons/md";
 const DashBoard = () => {
 
-  const [{userRole},isPending] = useUserRole()
+  const [{userRole}] = useUserRole()
 
   
-
-  if(isPending){
-    return (
-      <span className="loading absolute left-1/2 top-1/2 loading-spinner text-success"></span>
-    );
-  }
-
+  
   return (
     <div className="flex gap-5">
       {/* left sidber  */}

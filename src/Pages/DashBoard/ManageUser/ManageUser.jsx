@@ -6,7 +6,6 @@ import useUserRole from "../../../Hooks/useUserRole";
 const ManageUser = () => {
 
     const [ {userRole} ] = useUserRole();
-
     
   const axiosSercure = useAxiosSecure();
 

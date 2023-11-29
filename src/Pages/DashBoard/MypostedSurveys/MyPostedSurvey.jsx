@@ -60,9 +60,15 @@ const MyPostedSurvey = () => {
         .then(res => {
             setUserFeadback(res.data)
         })
-
+   
         
 
+    }
+    
+    if(isPending){
+      return (
+        <span className="loading absolute left-1/2 top-1/2 loading-spinner text-success"></span>
+      );
     }
 
     return (

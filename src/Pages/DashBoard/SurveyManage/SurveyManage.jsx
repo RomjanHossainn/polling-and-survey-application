@@ -32,7 +32,7 @@ const SurveyManage = () => {
         allowOutsideClick: () => !Swal.isLoading(),
       }).then((result) => {
         if (result.isConfirmed) {
-          console.log(result.value);
+          
           axiosSecure.patch(`/surveystatus/${_id}`).then((res) => {
             if (res.data.modifiedCount > 0) {
               refetch();

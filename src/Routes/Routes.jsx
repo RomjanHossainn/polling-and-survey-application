@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/pricingpage",
-        element : <PricingPage></PricingPage>
+        element: <PricingPage></PricingPage>,
       },
       {
         path: "/surveyspage",
@@ -51,7 +51,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <SurveyDetails></SurveyDetails>,
+        element: (
+          <PrivetRoute>
+            <SurveyDetails></SurveyDetails>
+          </PrivetRoute>
+        ),
       },
     ],
   },
@@ -65,7 +69,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/adminhome",
-        element: <h1>HOME</h1>,
+        element: (
+          <OnlyAdminPrivet>
+            <h1>HOME</h1>
+          </OnlyAdminPrivet>
+        ),
       },
       {
         path: "/dashboard/manageusers",
