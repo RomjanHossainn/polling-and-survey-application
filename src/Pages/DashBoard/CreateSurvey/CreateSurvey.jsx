@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 const CreateSurvey = () => {
 
     const {user} = useAuth();
@@ -9,6 +10,7 @@ const CreateSurvey = () => {
     const {
       register,
       formState: { errors },
+      reset,
       handleSubmit,
     } = useForm();
 
@@ -25,12 +27,21 @@ const CreateSurvey = () => {
           dislikeCount : 0,
           options : ['Yes','No'],
           vote : 0,
-          status : 'posted',
+          status : 'publish',
         };
 
         axiosSercure.post('/surveys',createSurvey)
         .then(res => {
-            console.log(res.data)
+            if(res.data.insertedId){
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your Survey publish successfully",
+                showConfirmButton: false,
+                timer: 3000,
+              });
+              reset();
+            }
         })
 
     }

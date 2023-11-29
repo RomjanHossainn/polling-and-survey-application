@@ -7,8 +7,7 @@ const ManageUser = () => {
 
     const [ {userRole} ] = useUserRole();
 
-    console.log(userRole)
-
+    
   const axiosSercure = useAxiosSecure();
 
   const { data: users = [],isPending,refetch } = useQuery({

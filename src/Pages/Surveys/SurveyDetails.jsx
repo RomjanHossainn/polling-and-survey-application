@@ -5,7 +5,6 @@ import { FcSurvey } from "react-icons/fc";
 import { AiFillLike } from "react-icons/ai";
 import { BiSolidDislike } from "react-icons/bi";
 import useAuth from "../../Hooks/useAuth";
-import { useState } from "react";
 import {
   LineChart,
   Line,
@@ -39,7 +38,7 @@ const SurveyDetails = () => {
     },
   });
 
-  const { category, timestamp, description, dislikeCount, likeCount, title, vote, _id } =
+  const { category, timestamp, email, description, dislikeCount, likeCount, title, vote, _id } =
     survey || {};
 
   if (isPending) {
@@ -57,7 +56,10 @@ const SurveyDetails = () => {
     const voteCheck = {
       userId,
       surveyId: _id,
-      impretion : 'vote'
+      impretion: "vote",
+      email: email,
+      user: user?.displayName,
+      vote: vote,
     };
 
     axiosPublic.post("/voteduser",voteCheck)
@@ -103,6 +105,9 @@ const SurveyDetails = () => {
         userId,
         surveyId: _id,
         impretion: "like",
+        email: email,
+        user: user?.displayName,
+        
       };
 
 
@@ -134,6 +139,9 @@ const SurveyDetails = () => {
         userId,
         surveyId: _id,
         impretion: "dislike",
+        email: email,
+        user: user?.displayName,
+        
       };
 
       axiosPublic.post("/voteduser", voteCheck).then((res) => {

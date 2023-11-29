@@ -14,6 +14,11 @@ import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
 import AdminPrivet from "../PrivetRoute/AdminPrivet/AdminPrivet";
 import CreateSurvey from "../Pages/DashBoard/CreateSurvey/CreateSurvey";
+import SurveyManage from "../Pages/DashBoard/SurveyManage/SurveyManage";
+import OnlyAdminPrivet from "../PrivetRoute/AdminPrivet/OnlyAdminPrivet";
+import MyPostedSurvey from "../Pages/DashBoard/MypostedSurveys/MyPostedSurvey";
+import PricingPage from "../Pages/PricingPage/PricingPage";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +37,10 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
+        path: "/pricingpage",
+        element : <PricingPage></PricingPage>
+      },
+      {
         path: "/surveyspage",
         element: (
           <PrivetRoute>
@@ -48,10 +57,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashBoard></DashBoard>,
+    element: (
+      <AdminPrivet>
+        <DashBoard></DashBoard>
+      </AdminPrivet>
+    ),
     children: [
       {
-        path: "/dashboard",
+        path: "/dashboard/adminhome",
         element: <h1>HOME</h1>,
       },
       {
@@ -65,8 +78,24 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/createsurvey",
         element: (
+          // <AdminPrivet>
+          <CreateSurvey></CreateSurvey>
+          // </AdminPrivet>
+        ),
+      },
+      {
+        path: "/dashboard/managesurveyes",
+        element: (
+          <OnlyAdminPrivet>
+            <SurveyManage></SurveyManage>
+          </OnlyAdminPrivet>
+        ),
+      },
+      {
+        path: "/dashboard/mypostedsurvey",
+        element: (
           <AdminPrivet>
-            <CreateSurvey></CreateSurvey>
+            <MyPostedSurvey></MyPostedSurvey>
           </AdminPrivet>
         ),
       },

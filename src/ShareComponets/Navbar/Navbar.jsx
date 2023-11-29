@@ -1,9 +1,13 @@
 import useAuth from '../../Hooks/useAuth';
+import useUserRole from '../../Hooks/useUserRole';
 import logo from '../../assets/logo.png'
 
 import {Link, NavLink} from 'react-router-dom'
 
 const Navbar = () => {
+
+  const [{ userRole }] = useUserRole();
+
 
 
   const {user,loading,logOut} = useAuth()
@@ -29,6 +33,11 @@ const Navbar = () => {
       <li>
         <NavLink className={'text-lg'} to="/pricingpage">Pricing Page </NavLink>
       </li>
+      {
+        userRole === 'admin' || userRole === 'surveyor' ?<li>
+        <NavLink className={'text-lg'} to={`${userRole === 'surveyor' ? '/dashboard/mypostedsurvey' : '/dashboard/adminhome'}`}>Dashboard</NavLink>
+      </li> : <></>
+      }
     </>
   );
 
