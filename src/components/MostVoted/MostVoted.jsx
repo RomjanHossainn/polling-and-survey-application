@@ -33,9 +33,12 @@ const MostVoted = () => {
       <div>
         <div className="py-6">
           <SectionTitle title={"Featured Surveys"}></SectionTitle>
-          <h5 className="text-center">Most Voted Survey</h5>
+          <p className="text-center">
+            Here are the polls with the most votes . You can participate  if you
+            want <br /> . polls with the most votes{" "}
+          </p>
         </div>
-        <div className="grid md:grid-cols-2 gap-14">
+        <div className="grid md:grid-cols-2 gap-6">
           {mostVoteSurvey?.map((survey) => (
             <SingleSurvey key={survey._id} survey={survey}></SingleSurvey>
           ))}

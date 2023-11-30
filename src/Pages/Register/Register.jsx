@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
@@ -11,7 +11,11 @@ const Register = () => {
   const {createUser} = useAuth()
 
   const axiosPublic = useAxiosPublic();
-  
+
+    const loaction = useLocation();
+    const naviget = useNavigate()
+
+  console.log(loaction)
 
   const {
     register,
@@ -46,22 +50,22 @@ const Register = () => {
                 timer: 1500,
               });
               reset()
+              naviget(loaction.state.state ? loaction.state.state : "/");
             }
           })
 
         })
         .catch(err => {
-          console.log(err)
+          // console.log(err)
         })
       })
       .catch(err => {
-        console.log(err.message)
+        // console.log(err.message)
       })
    };
 
-   const loaction = useLocation();
-
-   console.log(loaction)
+ 
+   
 
     return (
       <section className="text-gray-600 body-font">

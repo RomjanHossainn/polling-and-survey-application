@@ -1,50 +1,51 @@
+
 import { useForm } from "react-hook-form";
-import useAuth from "../../../Hooks/useAuth";
+import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-const CreateSurvey = () => {
 
-    const {user} = useAuth();
-    const axiosSercure = useAxiosSecure()
+const UpdateSurvey = () => {
+  const { id } = useParams();
+    const [survey,setSurvey] = useState({})
+  const axiosSercure = useAxiosSecure();
 
-    const {
-      register,
-      formState: { errors },
-      reset,
-      handleSubmit,
-    } = useForm();
+  useEffect(() => {
+    axiosSercure.get(`/surveyedetails/${id}`).then((res) => {
+      setSurvey(res.data);
+    });
+  },[axiosSercure,id])
 
-    
+  const {
+    register,
+    formState: { errors },
+    reset,
+    handleSubmit,
+  } = useForm();
 
-    const handleData = (data) => {
-        console.log(data)
-        const createSurvey = {
-          title: data.title,
-          description: data.description,
-          category : data.select,
-          email : user?.email,
-          likeCount : 0,
-          dislikeCount : 0,
-          options : ['Yes','No'],
-          vote : 0,
-          status : 'publish',
-        };
+  console.log(survey)
 
-        axiosSercure.post('/surveys',createSurvey)
-        .then(res => {
-            if(res.data.insertedId){
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your Survey publish successfully",
-                showConfirmButton: false,
-                timer: 3000,
-              });
-              reset();
-            }
-        })
-
+  const handleData = (data) => {
+    const updateData = {
+        title : data.title,
+        description : data.description,
+        
     }
+
+    axiosSercure.patch(`/updatesurvey/${id}`,updateData)
+    .then(res => {
+        if(res.data.modifiedCount > 0){
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your Survey update successfully",
+              showConfirmButton: false,
+              timer: 3000,
+            });
+        }
+    })
+
+  };
 
   return (
     <form onSubmit={handleSubmit(handleData)}>
@@ -52,10 +53,10 @@ const CreateSurvey = () => {
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-12">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-              Create Survey
+              Update Survey
             </h1>
             <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              From here you can create your survey
+              From here you can update your survey
             </p>
           </div>
           <div className=" mx-auto">
@@ -69,8 +70,9 @@ const CreateSurvey = () => {
                     Ttile
                   </label>
                   <input
+                  defaultValue={survey?.title}
                     type="text"
-                    {...register('title',{required : true})}
+                    {...register("title", { required: true })}
                     name="title"
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
@@ -83,11 +85,18 @@ const CreateSurvey = () => {
                     Category
                   </label>
                   <div className="form-control w-full max-w-xs">
-                    <select name="select" {...register('select',{required : true})} className="select select-bordered">
+                    <select disabled={true}
+                    
+                      name="select"
+                      {...register("select", { required: true })}
+                      className="select select-bordered"
+                    >
                       {/* <option disabled  selected>
                         Chose Category
                       </option> */}
-                      <option value="music">Music</option>
+                      <option defaultValue={survey?.category}>
+                        {survey?.category}
+                      </option>
                       <option value="fitness">Fitness</option>
                       <option value="movies">Movies</option>
                       <option value="travel">Travel</option>
@@ -107,7 +116,8 @@ const CreateSurvey = () => {
                   </label>
                   <textarea
                     name="description"
-                    {...register('description',{required:true})}
+                    defaultValue={survey?.description}
+                    {...register("description", { required: true })}
                     className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                   ></textarea>
                 </div>
@@ -125,4 +135,4 @@ const CreateSurvey = () => {
   );
 };
 
-export default CreateSurvey;
+export default UpdateSurvey;

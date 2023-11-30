@@ -18,6 +18,7 @@ import SurveyManage from "../Pages/DashBoard/SurveyManage/SurveyManage";
 import OnlyAdminPrivet from "../PrivetRoute/AdminPrivet/OnlyAdminPrivet";
 import MyPostedSurvey from "../Pages/DashBoard/MypostedSurveys/MyPostedSurvey";
 import PricingPage from "../Pages/PricingPage/PricingPage";
+import UpdateSurvey from "../Pages/DashBoard/UpdateSurvey/UpdateSurvey";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,6 @@ const router = createBrowserRouter([
             <AllSurveys></AllSurveys>
           </PrivetRoute>
         ),
-        loader: () => fetch("http://localhost:5000/surveyCount"),
       },
       {
         path: "/details/:id",
@@ -106,6 +106,10 @@ const router = createBrowserRouter([
             <MyPostedSurvey></MyPostedSurvey>
           </AdminPrivet>
         ),
+      },
+      {
+        path: "/dashboard/mypostedsurvey/update/:id",
+        element : <UpdateSurvey></UpdateSurvey>
       },
     ],
   },

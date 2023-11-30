@@ -22,5 +22,5 @@ const queryClient = new QueryClient();
         </div>
       </QueryClientProvider>
     </AuthProvider>
-    // </React.StrictMode>
+    //  </React.StrictMode>
   );

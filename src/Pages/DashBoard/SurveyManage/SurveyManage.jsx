@@ -49,7 +49,9 @@ const SurveyManage = () => {
             axiosSecure
               .post("/admin/feedback/message", badReviewMessage)
               .then((res) => {
-                console.log(res.data);
+                if(res.data.insertedId){
+                  refetch()
+                }
               });
           });
         }
@@ -87,6 +89,7 @@ const SurveyManage = () => {
           </thead>
           <tbody>
             {manageSurveys?.map((survey) => (
+              
               <tr key={survey._id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                 <th
                   scope="row"
@@ -101,7 +104,7 @@ const SurveyManage = () => {
                     href="#"
                     className="font-medium px-3 py-2 rounded-md bg-green-600 text-white hover:underline"
                   >
-                    Unpublish
+                    UnPublish
                   </a>
                 </td>
               </tr>

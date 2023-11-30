@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Modal from "react-modal";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 const MyPostedSurvey = () => {
 
     const axiosSecure = useAxiosSecure();
@@ -60,8 +61,7 @@ const MyPostedSurvey = () => {
         .then(res => {
             setUserFeadback(res.data)
         })
-   
-        
+  
 
     }
     
@@ -126,6 +126,14 @@ const MyPostedSurvey = () => {
                           : survey.status}
                       </a>
                     </span>
+                  </td>
+                  <td>
+                    <Link
+                      to={`/dashboard/mypostedsurvey/update/${survey._id}`}
+                      className="bg-green-600 text-white px-3 py-2 rounded-md"
+                    >
+                      Update
+                    </Link>
                   </td>
                 </tr>
               ))}
