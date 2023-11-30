@@ -19,11 +19,14 @@ import OnlyAdminPrivet from "../PrivetRoute/AdminPrivet/OnlyAdminPrivet";
 import MyPostedSurvey from "../Pages/DashBoard/MypostedSurveys/MyPostedSurvey";
 import PricingPage from "../Pages/PricingPage/PricingPage";
 import UpdateSurvey from "../Pages/DashBoard/UpdateSurvey/UpdateSurvey";
+import Comments from "../components/Commnents/Comments";
+import Erorrpage from "../ShareComponets/Erorrpage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement : <Erorrpage></Erorrpage>,
     children: [
       {
         path: "/",
@@ -57,24 +60,22 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
       },
+      {
+        path: "/seecommnets/:id",
+        element : <Comments></Comments>
+      },
     ],
   },
   {
     path: "/dashboard",
+    errorElement : <Erorrpage></Erorrpage>,
     element: (
       <AdminPrivet>
         <DashBoard></DashBoard>
       </AdminPrivet>
     ),
     children: [
-      {
-        path: "/dashboard/adminhome",
-        element: (
-          <OnlyAdminPrivet>
-            <h1>HOME</h1>
-          </OnlyAdminPrivet>
-        ),
-      },
+      
       {
         path: "/dashboard/manageusers",
         element: (
@@ -109,7 +110,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/mypostedsurvey/update/:id",
-        element : <UpdateSurvey></UpdateSurvey>
+        element: <UpdateSurvey></UpdateSurvey>,
       },
     ],
   },

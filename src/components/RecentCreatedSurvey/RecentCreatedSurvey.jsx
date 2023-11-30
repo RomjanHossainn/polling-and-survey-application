@@ -15,8 +15,7 @@ const RecentCreatedSurvey = () => {
         }
     })
 
-    console.log(recentCreatedSurvey)
-
+   
     return (
       <div>
         <div className="py-12">

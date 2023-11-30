@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../ShareComponets/SectionTtile/SectionTitle";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import SingleSurvey from "../../Pages/Surveys/SingleSurvey";
-import useAuth from "../../Hooks/useAuth";
 
 const MostVoted = () => {
 
@@ -16,17 +15,12 @@ const MostVoted = () => {
     }
   })
 
-  const user = useAuth();
-  console.log(user.user)
-
+ 
   if(isPending){
     return (
       <span className="loading absolute left-1/2 top-1/2 loading-spinner text-success"></span>
     );
   }
-
-  const date = new Date();
-  console.log(date.getDate(),date.getFullYear(),date.getMonth())
 
 
     return (

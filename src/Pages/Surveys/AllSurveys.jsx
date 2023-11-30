@@ -32,7 +32,7 @@ const AllSurveys = () => {
     }, [category,axiosPublic,sorting]);
 
 
-    console.log(sorting)
+    
    
   //  const numberOfPage = Math.ceil(surveyCount / itemPerpage);
   //  const pages = [...Array(numberOfPage).keys()];

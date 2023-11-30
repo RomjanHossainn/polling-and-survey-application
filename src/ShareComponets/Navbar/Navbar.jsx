@@ -25,19 +25,36 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink className={'text-lg'} to="/">Home</NavLink>
+        <NavLink className={"text-lg"} to="/">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink className={'text-lg'} to="/surveyspage">Surveys Page </NavLink>
+        <NavLink className={"text-lg"} to="/surveyspage">
+          Surveys Page{" "}
+        </NavLink>
       </li>
       <li>
-        <NavLink className={'text-lg'} to="/pricingpage">Pricing Page </NavLink>
+        <NavLink className={"text-lg"} to="/pricingpage">
+          Pricing Page{" "}
+        </NavLink>
       </li>
-      {
-        userRole === 'admin' || userRole === 'surveyor' ?<li>
-        <NavLink className={'text-lg'} to={`${userRole === 'surveyor' ? '/dashboard/mypostedsurvey' : '/dashboard/adminhome'}`}>Dashboard</NavLink>
-      </li> : <></>
-      }
+      {userRole === "admin" || userRole === "surveyor" ? (
+        <li>
+          <NavLink
+            className={"text-lg"}
+            to={`${
+              userRole === "surveyor"
+                ? "/dashboard/mypostedsurvey"
+                : "/dashboard/managesurveyes"
+            }`}
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      ) : (
+        <></>
+      )}
     </>
   );
 

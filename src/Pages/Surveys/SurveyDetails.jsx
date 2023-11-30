@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { FcSurvey } from "react-icons/fc";
 import { AiFillLike } from "react-icons/ai";
@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 import Navbar from "../../ShareComponets/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useComments from "../../Hooks/useComments";
 
 
 const SurveyDetails = () => {
@@ -25,6 +26,9 @@ const SurveyDetails = () => {
   const axiosPublic = useAxiosPublic();
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure()
+
+  const [comments, refetching] = useComments(id);
+
   
  
   // const [value,setValue] = useState('')
@@ -45,6 +49,9 @@ const SurveyDetails = () => {
 
   const { category, timestamp, email, description, dislikeCount, likeCount, title, vote, _id } =
     survey || {};
+
+    
+    
 
   if (isPending) {
     return (
@@ -177,12 +184,26 @@ const SurveyDetails = () => {
       const commentInfo = {
         comment : comments,
         email : email,
-        userEmail : user?.email
+        userEmail : user?.email,
+        surveyId : _id,
+        name : user?.displayName,
       }
+
+
 
       axiosSecure.post('/comments',commentInfo)
       .then(res => {
-        console.log(res.data)
+        if(res.data.insertedId){
+           Swal.fire({
+             position: "top-end",
+             icon: "success",
+             title: "comment post success fully",
+             showConfirmButton: false,
+             timer: 3000,
+           });
+           e.target.reset()
+           refetching()
+        }
       })
 
     }
@@ -285,9 +306,10 @@ const SurveyDetails = () => {
               <p>{`Total Vote = ${vote}`}</p>
             </span>
 
-            <span className="text-gray-400 inline-flex items-center leading-none text-sm">
+            <Link to={`/seecommnets/${id}`} className="text-indigo-500 cursor-pointer inline-flex items-center leading-none text-sm">
+              see Comments
               <svg
-                className="w-4 h-4 mr-1"
+                className="w-4 h-4 ms-2 mr-1"
                 stroke="currentColor"
                 stroke-width="2"
                 fill="none"
@@ -297,8 +319,8 @@ const SurveyDetails = () => {
               >
                 <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
               </svg>
-              6
-            </span>
+              {comments.length}
+            </Link>
           </div>
         </div>
 
